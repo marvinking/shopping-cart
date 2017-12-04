@@ -6,7 +6,8 @@ var vm = new Vue({
   el: '#app',
   data: {
     totalMoney: 0,
-    productionList: ''
+    productionList: '',
+    checkedAll: false
   },
   filters: {
     fmtMoney: (value) => {
@@ -47,6 +48,25 @@ var vm = new Vue({
         // this.$set(item, 'checked', true);
       } else {
         item.checked = !item.checked;
+      }
+    },
+    selectAll: function () {
+      this.checkedAll = !this.checkedAll;
+
+      if (this.checkedAll) {
+        this.productionList.forEach(item => {
+
+          if (typeof item.checked === 'undefined') {
+            this.$set(item, 'checked', true);
+          } else {
+            item.checked = true;
+          }
+
+        })
+      } else {
+        this.productionList.forEach(item => {
+          item.checked = false;
+        })
       }
     }
   }
