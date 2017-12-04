@@ -659,7 +659,15 @@
     float: left;
     color: #EE7A23; }
     .cart-foot-wrap .item-all-check .item-check-btn {
+      position: relative;
       margin-right: 18px; }
+
+    .cart-foot-wrap .item-all-check .item-check-btn.check .icon-ok {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+    }
+
     .cart-foot-wrap .item-all-check span {
       vertical-align: middle; }
   .cart-foot-wrap .item-all-del {
