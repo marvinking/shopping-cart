@@ -1,2 +1,7 @@
-# shopping-cart
-一个简易购物车界面交互
+# shoppingCart
+一款简易购物车(学习自https://github.com/Yfling/shoppingCart)
+
+基于vue2.0开发
+vue-resource
+
+由于项目比较简单，所以没有npm有关的包，直接引用的CDN文件，不需要下载后再去安装vue的环境和各种安装包
