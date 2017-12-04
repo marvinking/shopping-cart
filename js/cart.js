@@ -8,7 +8,11 @@ var vm = new Vue({
     totalMoney: 0,
     productionList: ''
   },
-  filter: {},
+  filters: {
+    fmtMoney: (value) => {
+      return "￥" + value.toFixed(2);
+    }
+  },
   mounted: function () {
     this.$nextTick(() => {
       this.cartView();
