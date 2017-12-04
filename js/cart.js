@@ -37,6 +37,17 @@ var vm = new Vue({
           item.productQuantity--;
         }
       }
+    },
+    selectProduct: (item) => {
+      if (typeof item.checked === 'undefined') {
+        // 全局注册属性  Vue.set(target, key, value)
+        Vue.set(item, 'checked', true);
+
+        // 局部注册属性
+        // this.$set(item, 'checked', true);
+      } else {
+        item.checked = !item.checked;
+      }
     }
   }
 });
