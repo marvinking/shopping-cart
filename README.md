@@ -1,5 +1,6 @@
 # shoppingCart
-一款简易购物车(学习自https://github.com/Yfling/shoppingCart)
+一款简易购物车
+(学习自https://github.com/Yfling/shoppingCart; https://www.imooc.com/learn/796)
 
 基于vue2.0开发
 vue-resource
