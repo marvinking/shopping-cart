@@ -25,10 +25,10 @@ var vm = new Vue({
         .get('data/cartData.json')
         .then(res => {
           this.productionList = res.data.result.list;
-          this.totalMoney = res.data.result.totalMoney;
+          // this.totalMoney = res.data.result.totalMoney;
         })
     },
-    changeQuantity: (item, bool) => {
+    changeQuantity: function (item, bool) {
       // bool为true则为点击"+", 为false则为点击"-"
       if (bool) {
         item.productQuantity++;
@@ -38,8 +38,9 @@ var vm = new Vue({
           item.productQuantity--;
         }
       }
+      this.calcTotalMoney();
     },
-    selectProduct: (item) => {
+    selectProduct: function (item) {
       // todo 当单选选中全部商品时，需要选中全选
       if (typeof item.checked === 'undefined') {
         // 全局注册属性  Vue.set(target, key, value)
@@ -50,6 +51,7 @@ var vm = new Vue({
       } else {
         item.checked = !item.checked;
       }
+      this.calcTotalMoney();
     },
     selectAll: function () {
       this.checkedAll = !this.checkedAll;
@@ -69,6 +71,15 @@ var vm = new Vue({
           item.checked = false;
         })
       }
+      this.calcTotalMoney();
+    },
+    calcTotalMoney: function () {
+      this.totalMoney = 0;
+      this.productionList.forEach(item => {
+        if (item.checked) {
+          this.totalMoney += item.productPrice * item.productQuantity;
+        }
+      })
     }
   }
 });
