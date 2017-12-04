@@ -40,6 +40,7 @@ var vm = new Vue({
       }
     },
     selectProduct: (item) => {
+      // todo 当单选选中全部商品时，需要选中全选
       if (typeof item.checked === 'undefined') {
         // 全局注册属性  Vue.set(target, key, value)
         Vue.set(item, 'checked', true);
