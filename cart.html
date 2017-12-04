@@ -84,7 +84,10 @@
                       <div class="item-quantity">
                         <div class="select-self select-self-open">
                           <div class="quantity">
-                            <a href="javascript:void 0" v-on:click="changeQuantity(item, false)">-</a>
+                            <a href="javascript:void 0"
+                               v-on:click="changeQuantity(item, false)"
+                               v-bind:disabled="item.productQuantity === 1"
+                            >-</a>
                             <input type="text" value="0" disabled v-model="item.productQuantity">
                             <a href="javascript:void 0" @click="changeQuantity(item, true)">+</a>
                           </div>
