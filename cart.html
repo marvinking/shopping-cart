@@ -149,7 +149,13 @@
                   Item total: <span class="total-price">{{ totalMoney | fmtMoney }}</span>
                 </div>
                 <div class="next-btn-wrap">
-                  <a href="address.html" class="btn btn--red" style="width: 200px">结账</a>
+                  <!--href="address.html"-->
+                  <a
+                      @click="goToPay()"
+                      class="btn btn--red"
+                      style="width: 200px"
+                      v-bind:disabled="needsPayProducts.length === 0"
+                  >结账</a>
                 </div>
               </div>
             </div>

@@ -9,7 +9,8 @@ var vm = new Vue({
     productionList: '',
     checkedAll: false,
     delFlag: false,
-    curProduct: ''
+    curProduct: '',
+    needsPayProducts: []
   },
   filters: {
     fmtMoney: (value) => {
@@ -90,11 +91,19 @@ var vm = new Vue({
     },
     calcTotalMoney: function () {
       this.totalMoney = 0;
+      this.needsPayProducts = [];
       this.productionList.forEach(item => {
         if (item.checked) {
           this.totalMoney += item.productPrice * item.productQuantity;
+          this.needsPayProducts.push(item);
         }
       })
+    },
+    goToPay: function () {
+      if (this.needsPayProducts.length === 0) return;
+
+      let url = 'http://' + location.host + '/shopping-cart/address.html';
+      location.href = url;
     }
   }
 });

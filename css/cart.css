@@ -13,3 +13,11 @@
     color: #e2e2e2;
     cursor: default;
 }
+
+.next-btn-wrap .btn--red[disabled] {
+    background-color: #d1434a;
+    opacity: .5;
+    cursor: default;
+}
+
+.next-btn-wrap .btn--red[disabled]:hover { color: #fff; }
