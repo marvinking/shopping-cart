@@ -85,6 +85,8 @@ var vm = new Vue({
       this.productionList.splice(idx, 1);
       this.calcTotalMoney();
       this.delFlag = false;
+
+      if (this.productionList.length === 0) this.checkedAll = false;
     },
     calcTotalMoney: function () {
       this.totalMoney = 0;
