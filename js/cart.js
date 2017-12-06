@@ -7,7 +7,9 @@ var vm = new Vue({
   data: {
     totalMoney: 0,
     productionList: '',
-    checkedAll: false
+    checkedAll: false,
+    delFlag: false,
+    curProduct: ''
   },
   filters: {
     fmtMoney: (value) => {
@@ -72,6 +74,17 @@ var vm = new Vue({
         })
       }
       this.calcTotalMoney();
+    },
+    delProduct: function (item) {
+      this.delFlag = true;
+      this.curProduct = item;
+    },
+    affirmDel: function () {
+      // todo 有后台时需要向后台发起删除请求
+      let idx = this.productionList.indexOf(this.curProduct);
+      this.productionList.splice(idx, 1);
+      this.calcTotalMoney();
+      this.delFlag = false;
     },
     calcTotalMoney: function () {
       this.totalMoney = 0;

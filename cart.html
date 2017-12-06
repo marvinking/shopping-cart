@@ -57,7 +57,7 @@
                   </ul>
                 </div>
                 <ul class="cart-item-list">
-                  <li v-for="item in productionList">
+                  <li v-for="(item, index) in productionList">
                     <div class="cart-tab-1">
                       <div class="cart-item-check">
                         <a
@@ -105,7 +105,11 @@
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
-                        <a href="javascript:void 0" class="item-edit-btn">
+                        <a
+                            href="javascript:void 0"
+                            class="item-edit-btn"
+                            @click="delProduct(item)"
+                        >
                           <svg class="icon icon-del"><use xlink:href="#icon-del" ></use></svg>
                         </a>
                       </div>
@@ -152,22 +156,23 @@
           </div>
         </div>
 
-        <div class="md-modal modal-msg md-modal-transition" id="showModal">
+        <div class="md-modal modal-msg md-modal-transition" id="showModal" :class="{'md-show': delFlag}">
           <div class="md-modal-inner">
             <div class="md-top">
-              <button class="md-close">关闭</button>
+              <button class="md-close" @click="delFlag=false">关闭</button>
             </div>
             <div class="md-content">
               <div class="confirm-tips">
                 <p id="cusLanInfo">你确认删除此订单信息吗?</p>
               </div>
               <div class="btn-wrap col-2">
-                <button class="btn btn--m" id="btnModalConfirm">Yes</button>
-                <button class="btn btn--m btn--red" id="btnModalCancel">No</button>
+                <button class="btn btn--m" id="btnModalConfirm" @click="affirmDel()">Yes</button>
+                <button class="btn btn--m btn--red" id="btnModalCancel" @click="delFlag=false">No</button>
               </div>
             </div>
           </div>
         </div>
+        <div class="md-overlay" v-if="delFlag"></div>
       </div>
     </div>
 
