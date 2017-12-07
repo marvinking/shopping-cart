@@ -29,6 +29,12 @@ new Vue({
         .then(res => {
           this.addressList = res.data.result;
         });
+    },
+    setDefaultAddr: function (event, addr) {
+      // 阻止事件冒泡，防止点击设为默认时选中地址
+      event.stopPropagation();
+      this.addressList.find(item => item.isDefault === true).isDefault = false;
+      addr.isDefault = true;
     }
   }
 });

@@ -85,7 +85,11 @@
                   </a>
                 </div>
                 <div class="addr-opration addr-set-default" v-if="!addr.isDefault">
-                  <a href="javascript:;" class="addr-set-default-btn" ><i>设为默认</i></a>
+                  <a
+                      href="javascript:;"
+                      class="addr-set-default-btn"
+                      @click="setDefaultAddr($event, addr)"
+                  ><i>设为默认</i></a>
                 </div>
                 <div class="addr-opration addr-default" v-if="addr.isDefault">默认地址</div>
               </li>
