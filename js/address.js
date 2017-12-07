@@ -7,7 +7,8 @@ new Vue({
   data: {
     limitNum: 3,
     addressList: [],
-    curIndex: 0
+    curIndex: 0,
+    shippingMethod: 1
   },
   mounted: function () {
     this.$nextTick(() => {
