@@ -15,6 +15,11 @@ new Vue({
   filters: {
 
   },
+  computed: {
+    filterAddrs: function () {
+      return this.addressList.slice(0, 3);
+    }
+  },
   methods: {
     getAddrLIst: function () {
       this.$http
