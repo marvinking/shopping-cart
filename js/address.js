@@ -9,8 +9,13 @@ new Vue({
     addressList: [],
     curIndex: 0,
     shippingMethod: 1,
+    addAddrFlag: false,
     delAddrFlag: false,
-    curAddr: ''
+    curAddr: '',
+    newName: '',
+    newAddress: '',
+    newTel: '',
+    newAddr: {}
   },
   mounted: function () {
     this.$nextTick(() => {
@@ -47,6 +52,18 @@ new Vue({
       let idx = this.addressList.indexOf(this.curAddr);
       this.addressList.splice(idx, 1);
       this.delAddrFlag = false;
+    },
+    affirmAddAddr: function () {
+      if (this.newName && this.newAddress && this.newTel) {
+        this.newAddr = {
+          userName: this.newName,
+          streetName: this.newAddress,
+          tel: this.newTel,
+          isDefault: false
+        };
+        this.addressList.push(this.newAddr);
+        this.addAddrFlag = false;
+      }
     }
   }
 });
