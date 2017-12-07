@@ -20,7 +20,6 @@ new Vue({
       this.$http
         .get('data/address.json')
         .then(res => {
-          console.log(22, res);
           this.addressList = res.data.result;
         });
     }
