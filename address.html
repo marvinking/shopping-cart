@@ -80,10 +80,10 @@
                     <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
                   </a>
                 </div>
-                <div class="addr-opration addr-set-default">
+                <div class="addr-opration addr-set-default" v-if="!addr.isDefault">
                   <a href="javascript:;" class="addr-set-default-btn" ><i>设为默认</i></a>
                 </div>
-                <div class="addr-opration addr-default">默认地址</div>
+                <div class="addr-opration addr-default" v-if="addr.isDefault">默认地址</div>
               </li>
 
               <li class="addr-new">
