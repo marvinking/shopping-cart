@@ -54,7 +54,16 @@ new Vue({
       this.delAddrFlag = false;
     },
     affirmAddAddr: function () {
-      if (this.newName && this.newAddress && this.newTel) {
+      // todo 这堆判断可以作为优化需求
+      if (!this.newName) {
+        alert('请输入姓名');
+      } else if (!this.newAddress) {
+        alert('请输入收件地址');
+      } else if (!this.newTel) {
+        alert('请输入电话号码');
+      } else if (!parseInt(this.newTel)) {
+        alert('请输入正确格式的电话号码');
+      } else if (this.newName && this.newAddress && this.newTel) {
         this.newAddr = {
           userName: this.newName,
           streetName: this.newAddress,
@@ -63,6 +72,8 @@ new Vue({
         };
         this.addressList.push(this.newAddr);
         this.addAddrFlag = false;
+        this.newName = this.newAddress = this.newTel = '';
+        this.newAddr = {};
       }
     }
   }
