@@ -5,6 +5,7 @@
 new Vue({
   el: '.container',
   data: {
+    limitNum: 3,
     addressList: []
   },
   mounted: function () {
@@ -17,7 +18,7 @@ new Vue({
   },
   computed: {
     filterAddrs: function () {
-      return this.addressList.slice(0, 3);
+      return this.addressList.slice(0, this.limitNum);
     }
   },
   methods: {
