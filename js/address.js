@@ -8,7 +8,9 @@ new Vue({
     limitNum: 3,
     addressList: [],
     curIndex: 0,
-    shippingMethod: 1
+    shippingMethod: 1,
+    delAddrFlag: false,
+    curAddr: ''
   },
   mounted: function () {
     this.$nextTick(() => {
@@ -36,6 +38,15 @@ new Vue({
       event.stopPropagation();
       this.addressList.find(item => item.isDefault === true).isDefault = false;
       addr.isDefault = true;
+    },
+    delAddr: function (addr) {
+      this.curAddr = addr;
+      this.delAddrFlag = true;
+    },
+    affirmDelAddr: function () {
+      let idx = this.addressList.indexOf(this.curAddr);
+      this.addressList.splice(idx, 1);
+      this.delAddrFlag = false;
     }
   }
 });
