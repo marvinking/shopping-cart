@@ -9,6 +9,7 @@
     <link href="css/base.css" rel="stylesheet">
     <link href="css/checkout.css" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
+    <link href="css/address.css" rel="stylesheet">
     <style type="text/css">
         .quentity input {
             width: 40px;
@@ -63,11 +64,11 @@
         <div class="addr-list-wrap">
           <div class="addr-list">
             <ul>
-              <li>
+              <li v-for="addr in addressList">
                 <dl>
-                  <dt>JackBean</dt>
-                  <dd class="address">北京朝阳区朝阳公园</dd>
-                  <dd class="tel">13356576785</dd>
+                  <dt>{{ addr.userName }}</dt>
+                  <dd class="address">{{ addr.streetName }}</dd>
+                  <dd class="tel">{{ addr.tel }}</dd>
                 </dl>
                 <div class="addr-opration addr-edit">
                   <a href="javascript:;" class="addr-edit-btn">
