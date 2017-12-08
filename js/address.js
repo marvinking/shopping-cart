@@ -43,6 +43,11 @@ new Vue({
       event.stopPropagation();
       this.addressList.find(item => item.isDefault === true).isDefault = false;
       addr.isDefault = true;
+
+      // 将默认地址放在数组第一位
+      let idx = this.addressList.indexOf(addr);
+      this.addressList.splice(idx, 1);
+      this.addressList.unshift(addr);
     },
     delAddr: function (addr) {
       this.curAddr = addr;
