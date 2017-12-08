@@ -36,6 +36,12 @@ new Vue({
         .get('data/address.json')
         .then(res => {
           this.addressList = res.data.result;
+
+          //默认地址放在第一位
+          let defaultAddr = this.addressList.find(addr => addr.isDefault === true);
+          let idx = this.addressList.indexOf(defaultAddr);
+          this.addressList.splice(idx, 1);
+          this.addressList.unshift(addr);
         });
     },
     setDefaultAddr: function (event, addr) {
@@ -44,7 +50,7 @@ new Vue({
       this.addressList.find(item => item.isDefault === true).isDefault = false;
       addr.isDefault = true;
 
-      // 将默认地址放在数组第一位
+      // 设为默认时将默认地址放在数组第一位
       let idx = this.addressList.indexOf(addr);
       this.addressList.splice(idx, 1);
       this.addressList.unshift(addr);
