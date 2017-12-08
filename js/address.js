@@ -6,6 +6,7 @@ new Vue({
   el: '.container',
   data: {
     limitNum: 3,
+    isMore: false,
     addressList: [],
     curIndex: 0,
     shippingMethod: 1,
@@ -94,8 +95,10 @@ new Vue({
         this.addressList.unshift(this.newAddr);
         this.addressList.unshift(defaultAddr);
 
-        // 新建地址完成，在打开more的状态下需要将limitNum重新赋值
-        this.limitNum = this.addressList.length;
+        if (this.isMore) {
+          // 新建地址完成，在打开more的状态下需要将limitNum重新赋值
+          this.limitNum = this.addressList.length;
+        }
 
         this.addAddrFlag = false;
         this.newName = this.newAddress = this.newTel = '';
