@@ -39,9 +39,7 @@ new Vue({
 
           //默认地址放在第一位
           let defaultAddr = this.addressList.find(addr => addr.isDefault === true);
-          let idx = this.addressList.indexOf(defaultAddr);
-          this.addressList.splice(idx, 1);
-          this.addressList.unshift(defaultAddr);
+          this.sortAddrList(defaultAddr);
         });
     },
     setDefaultAddr: function (event, addr) {
@@ -51,9 +49,7 @@ new Vue({
       addr.isDefault = true;
 
       // 设为默认时将默认地址放在数组第一位
-      let idx = this.addressList.indexOf(addr);
-      this.addressList.splice(idx, 1);
-      this.addressList.unshift(addr);
+      this.sortAddrList(addr);
     },
     delAddr: function (addr) {
       this.curAddr = addr;
@@ -86,6 +82,11 @@ new Vue({
         this.newName = this.newAddress = this.newTel = '';
         this.newAddr = {};
       }
+    },
+    sortAddrList: function (defaultAddr) {
+      let idx = this.addressList.indexOf(defaultAddr);
+      this.addressList.splice(idx, 1);
+      this.addressList.unshift(defaultAddr);
     }
   }
 });
