@@ -11,6 +11,7 @@ new Vue({
     shippingMethod: 1,
     addAddrFlag: false,
     delAddrFlag: false,
+    editAddrFlag: false,
     curAddr: '',
     newName: '',
     newAddress: '',
@@ -100,6 +101,14 @@ new Vue({
         this.newName = this.newAddress = this.newTel = '';
         this.newAddr = {};
       }
+    },
+    editAddr: function (addr) {
+      this.curAddr = addr;
+      this.editAddrFlag = true;
+    },
+    affirmEditAddr: function () {
+      // todo 在有后台情况时，此处需要发起一个请求
+      this.editAddrFlag = false;
     },
     sortAddrList: function (defaultAddr, bool, newAddr) {
       let idx = this.addressList.indexOf(defaultAddr);
