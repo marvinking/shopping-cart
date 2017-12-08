@@ -93,6 +93,9 @@ new Vue({
         this.addressList.unshift(this.newAddr);
         this.addressList.unshift(defaultAddr);
 
+        // 新建地址完成，在打开more的状态下需要将limitNum重新赋值
+        this.limitNum = this.addressList.length;
+
         this.addAddrFlag = false;
         this.newName = this.newAddress = this.newTel = '';
         this.newAddr = {};
