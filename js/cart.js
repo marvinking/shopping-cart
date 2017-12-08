@@ -51,8 +51,12 @@ var vm = new Vue({
 
         // 局部注册属性
         // this.$set(item, 'checked', true);
+
+        this.isSelectedAll();
       } else {
         item.checked = !item.checked;
+
+        this.isSelectedAll();
       }
       this.calcTotalMoney();
     },
@@ -98,6 +102,14 @@ var vm = new Vue({
           this.needsPayProducts.push(item);
         }
       })
+    },
+    isSelectedAll: function () {
+      let unCheckedProduct = this.productionList.find(pro => pro.checked !== true);
+      if (!unCheckedProduct) {
+        this.checkedAll = true;
+      } else {
+        this.checkedAll = false;
+      }
     },
     goToPay: function () {
       if (this.needsPayProducts.length === 0) return;
