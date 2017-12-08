@@ -41,7 +41,7 @@ new Vue({
           let defaultAddr = this.addressList.find(addr => addr.isDefault === true);
           let idx = this.addressList.indexOf(defaultAddr);
           this.addressList.splice(idx, 1);
-          this.addressList.unshift(addr);
+          this.addressList.unshift(defaultAddr);
         });
     },
     setDefaultAddr: function (event, addr) {

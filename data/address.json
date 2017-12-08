@@ -8,7 +8,7 @@
       "streetName":"浙江省杭州市余杭区",
       "postCode":"311000",
       "tel":"12345678901",
-      "isDefault":true
+      "isDefault":false
     },
     {
       "addressId":"100002",
@@ -32,7 +32,7 @@
       "streetName":"浙江省杭州市上城区",
       "postCode":"311000",
       "tel":"12345678901",
-      "isDefault":false
+      "isDefault":true
     },
     {
       "addressId":"100005",
