@@ -77,15 +77,33 @@ new Vue({
           tel: this.newTel,
           isDefault: false
         };
-        this.addressList.push(this.newAddr);
+
+        /**
+         * 一：严谨做法，先找到默认地址；然后先将其从数组里移除，
+         * 再将新建的地址插入到数组第一位，最后将移除的默认地址插入到第一位
+         */
+        // let defaultAddr = this.addressList.find(addr => addr.isDefault === true);
+        // this.sortAddrList(defaultAddr, true, this.newAddr);
+
+        /**
+         * 二：可简捷做法，因为在加载数据或者设为默认时将默认地址排到了第一位，
+         * 所以我们可以先将第一位移除，然后插入新建的地址，最后插入默认地址
+         */
+        let defaultAddr = this.addressList.shift();
+        this.addressList.unshift(this.newAddr);
+        this.addressList.unshift(defaultAddr);
+
         this.addAddrFlag = false;
         this.newName = this.newAddress = this.newTel = '';
         this.newAddr = {};
       }
     },
-    sortAddrList: function (defaultAddr) {
+    sortAddrList: function (defaultAddr, bool, newAddr) {
       let idx = this.addressList.indexOf(defaultAddr);
       this.addressList.splice(idx, 1);
+
+      if (bool) this.addressList.unshift(newAddr);
+
       this.addressList.unshift(defaultAddr);
     }
   }
