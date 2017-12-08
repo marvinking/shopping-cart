@@ -131,7 +131,7 @@
                     >
                       <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                     </span>
-                    <span v-if="!checkedAll">全选</span>
+                    <span v-if="!checkedAll" @click="selectAll()">全选</span>
                   </a>
                 </div>
                 <div class="item-all-del" v-if="checkedAll">
