@@ -22,7 +22,7 @@ new Vue({
   },
   mounted: function () {
     this.$nextTick(() => {
-      this.getAddrLIst();
+      this.getAddrList();
     });
   },
   filters: {
@@ -34,7 +34,7 @@ new Vue({
     }
   },
   methods: {
-    getAddrLIst: function () {
+    getAddrList: function () {
       this.$http
         .get('data/address.json')
         .then(res => {
