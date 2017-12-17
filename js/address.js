@@ -5,8 +5,8 @@
 new Vue({
   el: '.container',
   data: {
+    initNum: 3,
     limitNum: 3,
-    isMore: false,
     addressList: [],
     curIndex: 0,
     shippingMethod: 1,
@@ -17,7 +17,8 @@ new Vue({
     newName: '',
     newAddress: '',
     newTel: '',
-    newAddr: {}
+    newAddr: {},
+    isOpen: false  // 是否已是more
   },
   mounted: function () {
     this.$nextTick(() => {
@@ -95,7 +96,7 @@ new Vue({
         this.addressList.unshift(this.newAddr);
         this.addressList.unshift(defaultAddr);
 
-        if (this.isMore) {
+        if (this.isOpen) {
           // 新建地址完成，在打开more的状态下需要将limitNum重新赋值
           this.limitNum = this.addressList.length;
         }
@@ -120,6 +121,18 @@ new Vue({
       if (bool) this.addressList.unshift(newAddr);
 
       this.addressList.unshift(defaultAddr);
+    },
+    // 点击more
+    clickMore: function () {
+      if (!this.isOpen) {
+        // 打开更多
+        this.limitNum = this.addressList.length;
+        this.isOpen = true;
+      } else {
+        // 收起更多
+        this.limitNum = this.initNum;
+        this.isOpen = false;
+      }
     }
   }
 });
